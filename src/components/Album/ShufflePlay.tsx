@@ -1,12 +1,22 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import * as React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import search from "../../api/search";
+import token from "../../api/token";
 
 export const BUTTON_HEIGHT = 48;
 export const BUTTON_WIDTH = 200;
 
+const cred = token();
+
 export default () => (
-  <TouchableOpacity>
+  <TouchableOpacity
+    onPress={() => {
+      search({ offset: 20, limit: 10, q: "In the end", token: cred }).then(
+        console.log(res)
+      );
+    }}
+  >
     <View style={styles.button}>
       <Text style={styles.label}>SHUFFLE PLAY</Text>
     </View>
